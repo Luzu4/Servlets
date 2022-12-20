@@ -21,7 +21,7 @@
     </div>
     <div class="card-body">
 
-        <form class="user" action="${pageContext.request.contextPath}/user/edit" method="post">
+        <form name="infoAboutUser" class="user" onsubmit="return validation()"  method="post">
             <div class="form-group">
                 Nazwa
                 <br><input type="text" class="form-control form-control-user" name="name" value="<c:out value="${userToEdit.userName}"/>">
@@ -37,6 +37,15 @@
 
     </div>
 
+    <script>
+        function validation(){
+            var x = document.forms["infoAboutUser"]["password"].value;
+            if(x===""){
+                alert("Password must be filled out");
+                return false;
+            }
+        }
 
+    </script>
 
 <%@ include file="footer.jsp" %>

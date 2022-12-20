@@ -4,7 +4,6 @@
 
 <%@ include file="header.jsp" %>
 
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -36,7 +35,7 @@
                         <td class="sorting_1"><c:out value="${user.id}"/></td>
                         <td><c:out value="${user.userName}"/></td>
                         <td><c:out value="${user.email}"/></td>
-                        <td><a href="#">Usun</a><a href="/user/edit?id=<c:out value="${user.id}"/>"> Edit</a><a href="/user/show?id=<c:out value="${user.id}"/>"> Pokaz</a></td>
+                        <td><a href="#" onclick="confirmAction(<c:out value="${user.id}"/>)">Usun</a><a href="/user/edit?id=<c:out value="${user.id}"/>"> Edit</a><a href="/user/show?id=<c:out value="${user.id}"/>"> Pokaz</a></td>
                     </tr>
                     </c:forEach>
                     </tbody>
@@ -47,6 +46,18 @@
 
 </div>
 
+
+    <script>
+
+        function confirmAction(userId){
+            let confirmAction = confirm("Do you want to delete user with id =" + userId);
+            if(confirmAction){
+                document.location.href="/user/delete?id=" + userId;
+            }else{
+                document.location.href="/user/list";
+            }
+        }
+    </script>
 
 
 
